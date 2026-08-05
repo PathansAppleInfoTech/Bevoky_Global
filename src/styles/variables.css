@@ -1,0 +1,93 @@
+:root {
+
+    /* ===== Main Brand Colors ===== */
+
+    --color-navy: #392216;
+    /* Rich espresso background */
+    --color-navy-soft: #312016;
+    /* Elevated surfaces */
+    --color-warm-black: #160d08;
+    /* Deep luxury brown */
+
+    /* ===== Gold Palette ===== */
+
+    --color-gold: #c89a32;
+    /* Primary brand gold */
+    --color-gold-bright: #f3cf73;
+    /* Champagne highlight */
+    --color-gold-deep: #8f6920;
+    /* Antique gold */
+    /* Keep variable names, remove orange look */
+    --color-amber: #b88b2a;
+    /* Warm golden bronze */
+    --color-amber-hot: #f6d978;
+    /* Bright champagne gold */
+
+    /* ===== Text ===== */
+
+    --color-cream: #f8f3e7;
+    --color-cream-dim: #d8ccb4;
+    --color-ink: #17110b;
+
+    /* ===== Borders ===== */
+
+    --color-line: rgba(200, 154, 50, .18);
+    --color-line-strong: rgba(200, 154, 50, .35);
+
+    /* ===== Glass ===== */
+
+    --color-glass: rgba(255, 255, 255, .045);
+    --color-glass-border: rgba(255, 255, 255, .09);
+
+    /* ===== Typography ===== */
+
+    --font-display: 'Montserrat', 'Helvetica Neue', sans-serif;
+    --font-body: 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* ===== Font Sizes ===== */
+
+    --fs-hero: clamp(2.6rem, 5.4vw, 5.4rem);
+    --fs-h1: clamp(2.2rem, 3.6vw, 3.6rem);
+    --fs-h2: clamp(1.7rem, 2.6vw, 2.6rem);
+    --fs-h3: clamp(1.25rem, 1.6vw, 1.6rem);
+    --fs-eyebrow: 0.78rem;
+    --fs-body: 1.05rem;
+    --fs-small: 0.9rem;
+
+    /* ===== Spacing ===== */
+
+    --space-section: clamp(3.5rem, 6vw, 6rem);
+
+    --space-xl: 3rem;
+    --space-lg: 2rem;
+    --space-md: 1.25rem;
+    --space-sm: 0.75rem;
+    --space-xs: 0.5rem;
+    /* ===== Layout ===== */
+
+    --container-max: 1360px;
+    --radius-lg: 24px;
+    --radius-md: 14px;
+    --radius-sm: 8px;
+
+    /* ===== Motion ===== */
+
+    --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+    --dur-fast: .4s;
+    --dur-med: .8s;
+    --dur-slow: 1.4s;
+
+    /* ===== Shadows ===== */
+
+    --shadow-elevated:
+        0 25px 70px rgba(0, 0, 0, .45);
+
+    --glow-gold:
+        0 0 60px rgba(243, 207, 115, .22);
+
+    --glow-amber:
+        0 0 90px rgba(243, 207, 115, .15);
+
+}

@@ -1,0 +1,32 @@
+{
+    "name": "Bevoky Global",
+    "short_name": "Bevoky",
+    "description": "Premium Beverage Import & Distribution Across Europe.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#0a0d14",
+    "theme_color": "#0a0d14",
+    "lang": "en",
+    "dir": "ltr",
+    "categories": [
+        "business",
+        "food",
+        "shopping"
+    ],
+    "icons": [
+        {
+            "src": "/assets/icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

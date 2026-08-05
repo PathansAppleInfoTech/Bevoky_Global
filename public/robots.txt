@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bevokyglobal.com/sitemap.xml
+
+# Block system folders
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/

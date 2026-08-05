@@ -1,0 +1,152 @@
+.footer {
+  position: relative;
+  background: linear-gradient(170deg, #2f1a08 0%, #241206 100%);
+
+  /* background: linear-gradient(180deg, var(--color-warm-black) 50%, #08090c 100%); */
+  border-top: 1px solid var(--color-line);
+  padding: 5rem 0 2rem;
+  overflow: hidden;
+}
+
+.glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 60%;
+  height: 40%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(201, 162, 74, 0.14), transparent 70%);
+  pointer-events: none;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.8fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid var(--color-line);
+  position: relative;
+}
+
+.brandBlock {
+  max-width: 320px;
+}
+
+.logoImg {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  transition: height .35s ease;
+  margin-bottom: 1.25rem;
+}
+
+.brandDesc {
+  font-size: 0.92rem;
+  color: var(--color-cream-dim);
+  line-height: 1.7;
+}
+
+.colTitle {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.4rem;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  list-style: none;
+}
+
+.linkList a {
+  font-size: 0.92rem;
+  color: var(--color-cream-dim);
+  transition: color 0.3s var(--ease-soft);
+}
+
+.linkList a:hover {
+  color: var(--color-gold-bright);
+}
+
+.contactItem {
+  font-size: 0.92rem;
+  color: var(--color-cream-dim);
+  margin-bottom: 0.85rem;
+}
+
+.contactItem a {
+  color: var(--color-cream-dim);
+}
+
+.contactItem a:hover {
+  color: var(--color-gold-bright);
+}
+
+.socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.socialIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-cream-dim);
+  transition: all 0.35s var(--ease-luxury);
+}
+
+.socialIcon:hover {
+  color: var(--color-ink);
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  transform: translateY(-3px);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--color-cream-dim);
+  opacity: 0.75;
+}
+
+.disclaimer {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.disclaimer p {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+}

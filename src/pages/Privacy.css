@@ -1,0 +1,263 @@
+/* ============================================================
+   Privacy Policy — Bevoky Global UG
+   Same statutory-ledger language as the Imprint page, extended
+   with a "rights dashboard" grid for §5 — the six GDPR rights
+   are a genuine enumerable set, so a grid of equal cards reads
+   correctly rather than as decoration.
+   ============================================================ */
+
+:root {
+  --ink: #171b26;
+  --ink-soft: #262c3d;
+  --paper: #faf7f1;
+  --paper-dim: #f1ecdf;
+  --rule: #d8cdb4;
+  --brass: #8a6d3f;
+  --brass-light: #b98f52;
+  --text: #2a2e38;
+  --text-muted: #6b6f7c;
+  --text-on-ink: #ede7d8;
+  --text-on-ink-muted: #a9a693;
+  --serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif;
+  --mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.privacy-page {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--sans);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ---------- Header ---------- */
+
+.privacy-header {
+    background: linear-gradient(170deg, #2f1a08 0%, #241206 100%);
+  color: var(--text-on-ink);
+  padding: 6rem 9vw 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.privacy-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* background:
+    linear-gradient(180deg, transparent 0%, var(--ink) 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 78px,
+      rgba(185, 143, 82, 0.06) 79px
+    ); */
+  pointer-events: none;
+}
+
+.privacy-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass-light);
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.privacy-eyebrow .seal {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--brass-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--brass-light);
+}
+
+.privacy-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  letter-spacing: -0.01em;
+  margin: 0 0 0.85rem;
+  position: relative;
+  z-index: 1;
+}
+
+.privacy-subtitle {
+  font-size: 1rem;
+  max-width: 52ch;
+  color: var(--text-on-ink-muted);
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Body / ledger ---------- */
+
+.privacy-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4rem 6vw 6rem;
+}
+
+.privacy-clause {
+  position: relative;
+  padding: 0 0 3rem 3.25rem;
+  border-left: 1px solid var(--rule);
+  margin-left: 0.6rem;
+}
+
+.privacy-clause:last-child {
+  padding-bottom: 0;
+}
+
+.privacy-clause::before {
+  content: attr(data-num);
+  position: absolute;
+  left: -0.62rem;
+  top: 0;
+  transform: translateX(-50%);
+  width: 1.3rem;
+  height: 1.3rem;
+  background: var(--paper);
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--brass);
+}
+
+.privacy-clause h2 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+
+.privacy-clause h3 {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin: 0 0 0.6rem;
+}
+
+.privacy-clause p {
+  margin: 0 0 1rem;
+  color: var(--text);
+  max-width: 64ch;
+}
+
+.privacy-clause p:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-clause a {
+  color: var(--brass);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+
+.privacy-clause a:hover {
+  text-decoration-color: var(--brass);
+}
+
+.privacy-legal-basis {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: var(--brass);
+  background: rgba(138, 109, 63, 0.09);
+  border: 1px solid rgba(138, 109, 63, 0.25);
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+}
+
+/* Rights dashboard grid */
+
+.privacy-rights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 0.5rem;
+}
+
+.privacy-right-card {
+  background: var(--paper);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.privacy-right-card .idx {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--brass);
+  border: 1px solid var(--brass);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.privacy-right-card span.label {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+/* ---------- Footer ---------- */
+
+.privacy-footer {
+  border-top: 1px solid var(--rule);
+  background: var(--paper-dim);
+  padding: 2.25rem 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+@media (max-width: 640px) {
+  .privacy-header {
+    padding: 5rem 6vw 2.5rem;
+  }
+  .privacy-body {
+    padding: 3rem 6vw 4rem;
+  }
+  .privacy-rights-grid {
+    grid-template-columns: 1fr;
+  }
+}

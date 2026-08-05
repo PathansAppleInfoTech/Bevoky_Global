@@ -1,0 +1,1467 @@
+/* =====================================================================
+   BEVOKY GLOBAL — HOME PALETTE (hardcoded per design brief, no CSS vars)
+   Background      #241206  (espresso-brown, matches the hero — no black)
+   Section Dark    #241206 / #2f1a08 gradients
+   Section Light   #faf8f3 / #f7f1e4
+   Gold            #d8b14d
+   Accent Gold     #f4c95d
+   Text White      #ffffff
+   Text Gray       #bfbfbf
+   Ink (on light)  #15130f
+   Ink Muted       #6f6a5e
+   Border (dark)   rgba(255,255,255,.08)
+   Border (light)  rgba(21,19,15,.10)
+   Card (dark)     #3c220a
+   Brown Gradient  #3b2208
+
+   SECTION RHYTHM — dark hero, light about, dark categories, light why,
+   dark services, light markets map. Alternates cleanly all the way down
+   so no two dark sections ever sit next to each other, and the section
+   right above the (separately-templated) footer is light.
+   ===================================================================== */
+
+/* =====================================================================
+   HERO
+   ===================================================================== */
+
+.heroSection {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #241206;
+    --gold-300: #ffdd93;
+
+}
+
+.heroBgPhoto {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-position: center 78%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: saturate(1.15) brightness(0.8) contrast(1.05);
+    animation: heroDrift 26s ease-in-out infinite alternate;
+}
+
+/* .heroBgVideo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+} */
+
+
+.heroBgVideo {
+    position: absolute;
+    top: 0;
+    width: 115%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 0%;
+    transform: translateX(-15%) scale(1.12);
+
+}
+
+@keyframes heroDrift {
+    from {
+        transform: scale(1.04) translateY(0);
+    }
+
+    to {
+        transform: scale(1.12) translateY(-1.5%);
+    }
+}
+
+.heroBgGradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(100deg,
+            #241206 0%,
+            rgba(36, 18, 6, 0.78) 0%,
+            rgba(36, 18, 6, 0.15) 100%);
+    /* background:
+        radial-gradient(120% 90% at 78% 20%, rgba(216, 177, 77, 0.24) 0%, transparent 55%),
+        radial-gradient(90% 70% at 8% 85%, rgba(59, 34, 8, 0.5) 0%, transparent 55%),
+        linear-gradient(180deg, #070707 0%, rgba(7, 7, 7, 0.7) 10%, rgba(7, 7, 7, 0.5) 62%, #070707 100%); */
+}
+
+.heroAtmosphere {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.9;
+    mix-blend-mode: screen;
+}
+
+.heroVignette {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: radial-gradient(120% 90% at 50% 40%, transparent 35%, rgba(0, 0, 0, 0.75) 100%);
+}
+
+.heroGrain {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.heroGrid {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    padding-top: 7rem;
+}
+
+.heroCopy {
+    max-width: 620px;
+}
+
+.heroEyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d8b14d;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid rgba(216, 177, 77, 0.35);
+    border-radius: 999px;
+    background: rgba(216, 177, 77, 0.08);
+}
+
+.heroHeadline {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--fs-hero, clamp(2rem, 3.4vw, 2.8rem));
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 1.75rem;
+    text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(100deg, #ffffff 45%, #f4c95d 78%, #d8b1 4d);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.text-gold {
+    color: var(--gold-300);
+}
+
+.heroSub {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    color: #bfbfbf;
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+}
+
+.heroCtaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.heroFeatureList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.75rem 2.25rem;
+    list-style: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1.75rem;
+}
+
+.heroFeatureItem {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    color: #e9e6df;
+}
+
+.heroFeatureIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    color: #15130f;
+    background: linear-gradient(135deg, #f4c95d, #d8b14d);
+    flex-shrink: 0;
+}
+
+.heroBottleColumn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 980px) {
+    .heroGrid {
+        grid-template-columns: 1fr;
+        padding-top: 6.5rem;
+        text-align: center;
+    }
+
+    .heroCopy {
+        max-width: 100%;
+        margin-inline: auto;
+    }
+
+    .heroSub {
+        margin-inline: auto;
+    }
+
+    .heroCtaRow {
+        justify-content: center;
+    }
+
+    .heroFeatureList {
+        justify-content: center;
+    }
+
+    .heroBottleColumn {
+        order: -1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .heroBgPhoto {
+        animation: none;
+    }
+}
+
+/* =====================================================================
+   HERO BOTTLE
+   ===================================================================== */
+
+.bottleStage {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    margin-inline: auto;
+    aspect-ratio: 2 / 3;
+    perspective: 1400px;
+}
+
+.bottleFloatWrap {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+}
+
+.bottleTiltWrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.bottleGlowLayer {
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(244, 201, 93, 0.5) 0%, rgba(216, 177, 77, 0.18) 45%, transparent 72%);
+    filter: blur(30px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bottleRays {
+    position: absolute;
+    inset: -20%;
+    z-index: 1;
+    pointer-events: none;
+    background: conic-gradient(from 200deg at 50% 38%,
+            transparent 0deg,
+            rgba(244, 201, 93, 0.14) 8deg,
+            transparent 22deg,
+            transparent 40deg,
+            rgba(244, 201, 93, 0.1) 50deg,
+            transparent 64deg,
+            transparent 100deg,
+            rgba(244, 201, 93, 0.12) 112deg,
+            transparent 128deg,
+            transparent 360deg);
+    mix-blend-mode: screen;
+    animation: rayTurn 40s linear infinite;
+}
+
+@keyframes rayTurn {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.bottleGroundGlow {
+    position: absolute;
+    left: 50%;
+    bottom: 4%;
+    width: 78%;
+    height: 18%;
+    background: radial-gradient(ellipse at center, rgba(244, 201, 93, 0.55) 0%, rgba(216, 177, 77, 0.2) 45%, transparent 75%);
+    transform: translateX(-50%);
+    filter: blur(10px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bottleContactShadow {
+    position: absolute;
+    left: 50%;
+    bottom: 3%;
+    width: 34%;
+    height: 4%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6), transparent 75%);
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.bottleHalo {
+    position: absolute;
+    inset: -14%;
+    background:
+        radial-gradient(42% 52% at 66% 36%, rgba(244, 201, 93, 0.4), transparent 70%),
+        radial-gradient(38% 48% at 28% 62%, rgba(216, 177, 77, 0.28), transparent 72%),
+        radial-gradient(60% 60% at 50% 50%, rgba(59, 34, 8, 0.3), transparent 80%);
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    animation: haloPulse 6s ease-in-out infinite;
+}
+
+@keyframes haloPulse {
+
+    0%,
+    100% {
+        opacity: 0.85;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.bottleImage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 3;
+    filter:
+        drop-shadow(0 46px 55px rgba(0, 0, 0, 0.65)) drop-shadow(0 8px 22px rgba(216, 177, 77, 0.35)) saturate(1.18) contrast(1.12) brightness(1.05);
+}
+
+.bottleSweep {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: linear-gradient(100deg,
+            transparent 28%,
+            rgba(255, 236, 190, 0.6) 46%,
+            rgba(255, 236, 190, 0.06) 52%,
+            transparent 70%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 2%, black 8%, black 96%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 2%, black 8%, black 96%, transparent 100%);
+}
+
+.bottleSpecular {
+    position: absolute;
+    top: 6%;
+    bottom: 8%;
+    left: 24%;
+    width: 6%;
+    z-index: 4;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    background: linear-gradient(180deg, transparent, rgba(255, 244, 214, 0.55) 30%, rgba(255, 244, 214, 0.25) 55%, transparent 90%);
+    filter: blur(2px);
+    border-radius: 50%;
+}
+
+.bottleCondensation {
+    position: absolute;
+    left: 16%;
+    right: 16%;
+    top: 10%;
+    bottom: 12%;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: screen;
+    background-image:
+        radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.55) 0 1.5px, transparent 2px),
+        radial-gradient(circle at 62% 30%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 38% 52%, rgba(255, 255, 255, 0.5) 0 1.8px, transparent 2.4px),
+        radial-gradient(circle at 78% 68%, rgba(255, 255, 255, 0.45) 0 1.2px, transparent 1.8px),
+        radial-gradient(circle at 12% 80%, rgba(255, 255, 255, 0.5) 0 1.4px, transparent 2px),
+        radial-gradient(circle at 55% 88%, rgba(255, 255, 255, 0.4) 0 1px, transparent 1.6px);
+    background-size: 60px 60px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 90%, transparent 100%);
+}
+
+.bottleBubbleField {
+    position: absolute;
+    left: 22%;
+    right: 22%;
+    top: 6%;
+    bottom: 4%;
+    z-index: 5;
+    overflow: hidden;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 92%, transparent 100%);
+}
+
+.bottleBubble {
+    position: absolute;
+    bottom: -6%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, rgba(255, 250, 230, 0.95), rgba(255, 210, 130, 0.15) 70%, transparent 76%);
+    opacity: 0;
+}
+
+.bottleFizz {
+    position: absolute;
+    left: 34%;
+    right: 34%;
+    top: 3%;
+    height: 12%;
+    z-index: 6;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.bottleAmbientField {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    overflow: visible;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+.bottleAmbientBubble {
+    position: absolute;
+    bottom: -6%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, rgba(244, 201, 93, 0.7), rgba(216, 177, 77, 0.1) 70%, transparent 76%);
+    opacity: 0;
+}
+
+@media (max-width: 720px) {
+    .bottleStage {
+        max-width: 300px;
+    }
+}
+
+/* =====================================================================
+   ABOUT PREVIEW  (light)
+   ===================================================================== */
+
+.aboutSection {
+    position: relative;
+    background: #faf8f3;
+    overflow: hidden;
+}
+
+.aboutGrid {
+    display: grid;
+    grid-template-columns: 1fr 0.95fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+}
+
+.aboutEyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a9781f;
+    margin-bottom: 1rem;
+}
+
+.aboutHeading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--fs-h2, clamp(2rem, 3.4vw, 2.8rem));
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+    max-width: 560px;
+    color: #15130f;
+}
+
+.aboutCopy {
+    color: #6f6a5e;
+    font-size: 1.02rem;
+    line-height: 1.85;
+    max-width: 560px;
+    margin-bottom: 1.25rem;
+}
+
+.aboutStatsColumn {
+    position: relative;
+    padding: 1.5rem;
+}
+
+.aboutMapDots {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.5;
+    background-image: radial-gradient(rgba(169, 120, 31, 0.4) 1.4px, transparent 1.4px);
+    background-size: 13px 13px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 75% at 60% 45%, black 40%, transparent 78%);
+    mask-image: radial-gradient(ellipse 70% 75% at 60% 45%, black 40%, transparent 78%);
+    pointer-events: none;
+}
+
+.aboutStatsGrid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 460px;
+}
+
+.aboutStatCard {
+    padding: 1.75rem 1.5rem;
+    border-radius: 18px;
+    background: #ffffff;
+    border: 1px solid rgba(21, 19, 15, 0.08);
+    box-shadow: 0 22px 40px -26px rgba(21, 19, 15, 0.28);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aboutStatCard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 50px -24px rgba(169, 120, 31, 0.35);
+}
+
+.aboutStatIcon {
+    color: #a9781f;
+    margin-bottom: 0.75rem;
+}
+
+.aboutStatValue {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+    color: #15130f;
+    line-height: 1;
+}
+
+.aboutStatValue span {
+    color: #d8b14d;
+}
+
+.aboutStatLabel {
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: #6f6a5e;
+    margin-top: 0.6rem;
+}
+
+@media (max-width: 900px) {
+    .aboutGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .aboutStatsColumn {
+        max-width: 460px;
+        margin: 0 auto;
+        padding: 0.5rem;
+    }
+
+    .aboutStatsGrid {
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutStatsGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.9rem;
+    }
+
+    .aboutStatCard {
+        padding: 1.25rem 1.1rem;
+    }
+}
+
+/* =======================================================================
+   CATEGORIES
+======================================================================= */
+
+.catSection {
+    position: relative;
+    background: linear-gradient(170deg, #2f1a08 0%, #241206 100%);
+}
+
+.catHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+}
+
+.catEyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+
+    font-family: var(--font-display);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+
+    color: #d8b14d;
+}
+
+.catHeading {
+    max-width: 580px;
+
+    color: #fff;
+
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2rem, 3.3vw, 2.9rem);
+    line-height: 1.15;
+}
+
+.catHeadNote {
+    max-width: 380px;
+
+    color: #bfbfbf;
+
+    font-size: .95rem;
+    line-height: 1.8;
+}
+
+/*===================================================*/
+
+.catGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+/*===================================================*/
+
+.catCard {
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    cursor: pointer;
+
+    isolation: isolate;
+
+    aspect-ratio: 3/4;
+
+    box-shadow: 0 20px 48px rgba(0, 0, 0, .22);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+}
+
+.catCard:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 28px 70px rgba(0, 0, 0, .32);
+}
+
+.catCardImg {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 1s ease,
+        filter .6s ease;
+}
+
+.catCard:hover .catCardImg {
+    transform: scale(1.1);
+
+    filter:
+        saturate(1.15) contrast(1.05);
+}
+
+/*===================================================*/
+
+.catCardShade {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, .08),
+            rgba(0, 0, 0, .18) 35%,
+            rgba(0, 0, 0, .82) 100%);
+
+    z-index: 1;
+}
+
+.catCardBorder {
+    position: absolute;
+    inset: 0;
+
+    border-radius: 22px;
+
+    border: 1px solid transparent;
+
+    transition: .45s;
+
+    z-index: 3;
+}
+
+.catCard:hover .catCardBorder {
+
+    border-color: #d8b14d;
+
+    box-shadow:
+
+        inset 0 0 40px rgba(216, 177, 77, .18),
+
+        0 0 30px rgba(216, 177, 77, .25);
+
+}
+
+/*===================================================*/
+
+.catCardContent {
+
+    position: relative;
+
+    z-index: 2;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    padding: 1.6rem;
+
+}
+
+.catCardTitle {
+
+    color: #fff;
+
+    font-family: var(--font-display);
+
+    font-size: 1.25rem;
+
+    font-weight: 700;
+
+}
+
+.catCardLine {
+
+    width: 28%;
+
+    height: 2px;
+
+    margin: .75rem 0;
+
+    background: linear-gradient(90deg,
+            #d8b14d,
+            transparent);
+
+    transition: .45s;
+
+}
+
+.catCard:hover .catCardLine {
+
+    width: 48%;
+
+}
+
+.catCardDesc {
+
+    color: #d2d2d2;
+
+    font-size: .88rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 1.2rem;
+
+}
+
+.catExplore {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: .45rem;
+
+    color: #f4c95d;
+
+    font-size: .82rem;
+
+    font-weight: 600;
+
+    letter-spacing: .05em;
+
+    text-transform: uppercase;
+
+    transition: .35s;
+
+}
+
+.catCard:hover .catExplore {
+
+    transform: translateX(8px);
+
+}
+
+/*===================================================*/
+/* Tablet */
+/*===================================================*/
+
+@media(max-width:1100px) {
+
+    .catGrid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+/*===================================================*/
+/* Mobile */
+/*===================================================*/
+
+@media(max-width:768px) {
+
+    .catHead {
+
+        margin-bottom: 2.5rem;
+
+    }
+
+    .catGrid {
+
+        grid-template-columns: 1fr;
+
+        gap: 1.5rem;
+
+    }
+
+    .catCard {
+
+        aspect-ratio: 16/16;
+
+    }
+
+    .catCardContent {
+
+        padding: 1.4rem;
+
+    }
+
+}
+
+/*===================================================*/
+
+@media(max-width:480px) {
+
+    .catHeading {
+
+        font-size: 2rem;
+
+    }
+
+    .catCardTitle {
+
+        font-size: 1.15rem;
+
+    }
+
+    .catCardDesc {
+
+        font-size: .84rem;
+
+    }
+
+}
+
+/* =====================================================================
+   WHY CHOOSE US  (light)
+   ===================================================================== */
+
+.whySection {
+    background: #faf8f3;
+    position: relative;
+}
+
+.whyGrid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+}
+
+.whyEyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a9781f;
+    margin-bottom: 1rem;
+}
+
+.whyHeading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: var(--fs-h2, clamp(2rem, 3.4vw, 2.8rem));
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    color: #15130f;
+}
+
+.whyIntro {
+    color: #6f6a5e;
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.25rem;
+}
+
+.whyFeatureGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1.75rem;
+}
+
+.whyFeatureCard {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+}
+
+.whyFeatureIcon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #fff, #f2ead8);
+    color: #a9781f;
+    border: 1px solid rgba(21, 19, 15, 0.08);
+}
+
+.whyFeatureTitle {
+    font-family: var(--font-display);
+    font-size: 0.94rem;
+    font-weight: 700;
+    color: #15130f;
+    margin-bottom: 0.3rem;
+}
+
+.whyFeatureText {
+    font-size: 0.85rem;
+    color: #6f6a5e;
+    line-height: 1.55;
+}
+
+.whyBottleStage {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-width: 460px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whyBottleGlow {
+    position: absolute;
+    inset: 8%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(216, 177, 77, 0.28) 0%, rgba(216, 177, 77, 0.08) 55%, transparent 75%);
+    filter: blur(20px);
+}
+
+.whyOrbitLines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.whyOrbitRing {
+    fill: none;
+    stroke: rgba(169, 120, 31, 0.2);
+    stroke-dasharray: 3 6;
+}
+
+.whyOrbitLine {
+    stroke: rgba(169, 120, 31, 0.35);
+    stroke-width: 1;
+}
+
+.whyBottleImg {
+    position: relative;
+    z-index: 1;
+    width: 58%;
+    height: 78%;
+    object-fit: contain;
+    filter: drop-shadow(0 30px 40px rgba(21, 19, 15, 0.25));
+    animation: whyBottleFloat 6s ease-in-out infinite;
+}
+
+@keyframes whyBottleFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.whyOrbitLabel {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #a9781f;
+    background: #ffffff;
+    border: 1px solid rgba(21, 19, 15, 0.08);
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    box-shadow: 0 10px 24px -14px rgba(21, 19, 15, 0.3);
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .whyGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .whyBottleStage {
+        order: -1;
+        max-width: 340px;
+    }
+
+    .whyOrbitLabel {
+        font-size: 0.66rem;
+        padding: 0.32rem 0.6rem;
+    }
+}
+
+@media (max-width: 560px) {
+    .whyFeatureGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================================
+   SERVICES  (dark espresso — recolored from near-black; not adjacent
+   to Categories since Why Choose Us sits between them)
+   ===================================================================== */
+
+.svcSection {
+    background: #241206;
+    position: relative;
+}
+
+.svcGrid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.5fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.svcIntro {
+    max-width: 380px;
+}
+
+.svcEyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d8b14d;
+    margin-bottom: 1rem;
+}
+
+.svcHeading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.svcIntroText {
+    color: #bfbfbf;
+    font-size: 0.94rem;
+    line-height: 1.75;
+}
+
+.svcCards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.svcCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    border-radius: 18px;
+    background: #3c220a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.svcCard:hover {
+    transform: translateY(-8px);
+    border-color: rgba(216, 177, 77, 0.5);
+    box-shadow: 0 24px 44px -20px rgba(216, 177, 77, 0.25);
+}
+
+.svcCardSweep {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(216, 177, 77, 0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.svcCard:hover .svcCardSweep {
+    opacity: 1;
+}
+
+.svcCardIndex {
+    position: relative;
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #d8b14d;
+    opacity: 0.7;
+    margin-bottom: 1.25rem;
+}
+
+.svcCardIcon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f4c95d;
+    background: linear-gradient(160deg, rgba(216, 177, 77, 0.16), rgba(216, 177, 77, 0.04));
+    border: 1px solid rgba(216, 177, 77, 0.25);
+    margin-bottom: 1.25rem;
+}
+
+.svcCardTitle {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+}
+
+.svcCardText {
+    position: relative;
+    font-size: 0.85rem;
+    color: #bfbfbf;
+    line-height: 1.65;
+    flex-grow: 1;
+}
+
+@media (max-width: 980px) {
+    .svcGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .svcCards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .svcCards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================================
+   MARKETS MAP  (flipped to LIGHT — this is the section that sits right
+   above the footer, so it can't be dark too or you'd get two dark
+   sections stacked at the very bottom of the page)
+   ===================================================================== */
+
+.mapSection {
+    background: #f7f1e4;
+    position: relative;
+    overflow: hidden;
+}
+
+.mapGrid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.mapEyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a9781f;
+    margin-bottom: 1rem;
+}
+
+.mapHeading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    color: #15130f;
+    margin-bottom: 1.25rem;
+}
+
+.mapIntroText {
+    color: #6f6a5e;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 420px;
+    margin-bottom: 2rem;
+}
+
+.mapWrap {
+    position: relative;
+    border-radius: 24px;
+    border: 1px solid rgba(21, 19, 15, 0.08);
+    background:
+        radial-gradient(60% 60% at 50% 45%, rgba(216, 177, 77, 0.14), transparent 70%),
+        #ffffff;
+    padding: 2rem;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -32px rgba(21, 19, 15, 0.25);
+}
+
+.mapSvg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.mapRoute {
+    fill: none;
+    stroke: #d8b14d;
+    stroke-width: 1;
+    stroke-linecap: round;
+    opacity: 0.6;
+    stroke-dasharray: 6 8;
+    animation: mapDash 3.5s linear infinite;
+}
+
+@keyframes mapDash {
+    to {
+        stroke-dashoffset: -140;
+    }
+}
+
+.mapNodeCity circle {
+    fill: #6f6a5e;
+}
+
+.mapNodeHub circle.core {
+    fill: #d8b14d;
+}
+
+.mapPulse {
+    fill: none;
+    stroke: #d8b14d;
+    stroke-width: 1.2;
+    opacity: 0;
+    animation: mapPulseAnim 2.6s ease-out infinite;
+}
+
+@keyframes mapPulseAnim {
+    0% {
+        r: 6;
+        opacity: 0.9;
+    }
+
+    100% {
+        r: 26;
+        opacity: 0;
+    }
+}
+
+.mapLabel {
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    fill: #a9781f;
+}
+
+.mapLabelHub {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    fill: #a9781f;
+}
+
+@media (max-width: 900px) {
+    .mapGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================================================
+   CTA (currently commented out in Home.jsx — left as dark/inactive;
+   recolor this block too if you turn the section back on)
+   ===================================================================== */
+
+.ctaSection {
+    position: relative;
+    padding: clamp(5rem, 12vw, 9rem) 0;
+    overflow: hidden;
+    background: radial-gradient(120% 140% at 50% 0%, rgba(216, 177, 77, 0.14), transparent 55%), #070707;
+    text-align: center;
+}
+
+.ctaGlowLeft,
+.ctaGlowRight {
+    position: absolute;
+    width: 40vw;
+    height: 40vw;
+    border-radius: 50%;
+    filter: blur(90px);
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.ctaGlowLeft {
+    left: -12%;
+    top: 20%;
+    background: radial-gradient(circle, #d8b14d, transparent 70%);
+}
+
+.ctaGlowRight {
+    right: -12%;
+    bottom: 10%;
+    background: radial-gradient(circle, #3b2208, transparent 70%);
+}
+
+.ctaContent {
+    position: relative;
+    z-index: 1;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.ctaEyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #d8b14d;
+}
+
+.ctaHeading {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 4.6vw, 4rem);
+    color: #ffffff;
+    margin: 1.5rem 0 1.75rem;
+}
+
+.ctaSub {
+    color: #bfbfbf;
+    font-size: 1.05rem;
+    max-width: 560px;
+    margin: 0 auto 2.75rem;
+    line-height: 1.75;
+}
+
+.ctaButtonRow {
+    display: flex;
+    justify-content: center;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+}

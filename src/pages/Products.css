@@ -1,0 +1,795 @@
+/* ==========================================================================
+   Bevoky Global — Products Page
+   Fonts: Montserrat (display) / Inter (body)
+
+   Palette — matched to About.css (espresso brown + champagne gold, no black):
+   Cream #FAF9F6 | Cream Warm #F7F0E2 | Amber-950 #241206 | Amber-900 #2F1A08
+   Amber-800 #3C220A | Amber-700 #55300F | Gold #D7B24D | Light Gold #F2CF6B
+   Ink (dark text) #241706
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap");
+
+.products-page {
+  /* Same token names as About.css's .about-page scope, redefined here so
+     the shared .about-hero / .eyebrow / .text-gold rules (which read these
+     custom properties) resolve correctly on this page too. */
+  --amber-950: #241206;
+  --amber-900: #2f1a08;
+  --amber-800: #3c220a;
+  --amber-700: #55300f;
+  --gold-500: #d7b24d;
+  --gold-400: #f0ca62;
+  --gold-300: #ffdd93;
+  --amber-glow: #f5a623;
+  --cream: #faf9f6;
+  --cream-warm: #f7f0e2;
+  --ink: #241706;
+
+  font-family: "Inter", sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.products-page * {
+  box-sizing: border-box;
+}
+
+.products-page img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---- Hero overrides: About.css's own rules depend on ".about-page h1"
+   / ".about-page p" ancestor selectors that don't exist here, so give the
+   hero title & copy their colors directly. ---- */
+.about-hero__title {
+  color: #ffffff;
+}
+
+.about-hero__text {
+  color: #d8c19b;
+}
+
+.gold-text {
+  color: #d7b24d;
+  background: linear-gradient(120deg, #d7b24d, #f2cf6b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-text.small {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.eyebrow-gold {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #d7b24d;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.eyebrow-gold.center {
+  display: block;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-heading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 3.4vw, 42px);
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+.section-paragraph {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #6b5c42;
+  max-width: 520px;
+  margin: 0 0 20px;
+}
+
+.section-paragraph.center {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-intro-center {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid rgba(215, 178, 77, 0.4);
+  background: linear-gradient(145deg, rgba(215, 178, 77, 0.08), rgba(215, 178, 77, 0.02));
+  color: #d7b24d;
+  font-size: 22px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.feature-icon.outline-dark {
+  border: 1px solid rgba(85, 48, 15, 0.18);
+  background: transparent;
+  color: #d7b24d;
+  width: 46px;
+  height: 46px;
+  font-size: 19px;
+  margin-bottom: 0;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(120deg, #d7b24d, #f2cf6b);
+  color: #2a1707;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   SECTION 2 — STORY BEHIND BEVOKY  (light section, dark brown card)
+   ========================================================================== */
+
+.story-section {
+  background: var(--cream);
+  padding: 90px 56px;
+}
+
+.story-card {
+  max-width: 1360px;
+  margin: 0 auto;
+  background: linear-gradient(160deg, var(--amber-800) 0%, var(--amber-950) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 46px 44px;
+  display: grid;
+  grid-template-columns: 0.85fr 1.5fr 1fr;
+  gap: 36px;
+  align-items: center;
+  box-shadow: 0 40px 80px rgba(36, 18, 6, 0.35);
+}
+
+.story-heading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: clamp(30px, 3.2vw, 40px);
+  color: #ffffff;
+  margin: 0 0 12px;
+  letter-spacing: -0.01em;
+}
+
+.story-subtitle {
+  font-size: 13.5px;
+  color: #c9b391;
+  margin: 0 0 16px;
+}
+
+.gold-underline {
+  display: block;
+  width: 46px;
+  height: 3px;
+  background: linear-gradient(120deg, #d7b24d, #f2cf6b);
+  border-radius: 2px;
+}
+
+.story-middle {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.story-letter-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  text-align: center;
+}
+
+.story-letter-card img {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.story-letter-card h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.story-right p {
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #d8c6a4;
+  margin: 0 0 16px;
+}
+
+.story-right strong {
+  color: #f2cf6b;
+}
+
+.story-right p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .story-section {
+    padding: 70px 20px;
+  }
+
+  .story-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 28px 22px;
+  }
+
+  .story-middle {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .story-letter-card {
+    padding: 16px;
+  }
+
+  .story-letter-card img {
+    height: 220px;
+    /* Increase height */
+    object-fit: cover;
+    /* Show the full image */
+    object-position: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-radius: 12px;
+  }
+
+  .story-heading {
+    font-size: 32px;
+  }
+
+  .story-right p {
+    font-size: 15px;
+  }
+}
+
+/* ==========================================================================
+   SECTION 3 — PRODUCT CATEGORIES  (light, warm cream — distinct from Story)
+   ========================================================================== */
+
+.categories-section {
+  background: var(--cream-warm);
+  padding: 100px 56px 110px;
+}
+
+.categories-grid {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+}
+
+.category-card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(85, 48, 15, 0.08);
+  transition: border-color 0.3s ease;
+}
+
+.category-card:hover {
+  border-color: #d7b24d;
+}
+
+.category-image-wrap {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+.category-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.category-card:hover .category-image-wrap img {
+  transform: scale(1.08);
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(36, 23, 6, 0.35));
+}
+
+.category-body {
+  padding: 20px 20px 24px;
+}
+
+.category-body h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 14px;
+}
+
+.category-body ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.category-body li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #7a6a4d;
+}
+
+.check-icon {
+  color: #d7b24d;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .categories-section {
+    padding: 70px 20px 80px;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .category-image-wrap {
+    height: 300px;
+    /* Taller image */
+  }
+
+  .category-image-wrap img {
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .category-body {
+    padding: 18px;
+  }
+
+  .category-body h3 {
+    font-size: 18px;
+  }
+
+  .category-body li {
+    font-size: 14px;
+  }
+}
+
+/* ==========================================================================
+   SECTION 4 — WHY CHOOSE BEVOKY GLOBAL  (dark brown, content-rich)
+   ========================================================================== */
+
+.why-choose-section {
+  background: linear-gradient(160deg, var(--amber-900) 0%, var(--amber-950) 100%);
+  padding: 100px 56px;
+}
+
+.why-choose-header {
+  max-width: 1360px;
+  margin: 0 auto 56px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: end;
+}
+
+.why-choose-intro {
+  max-width: 560px;
+}
+
+.section-heading.light {
+  color: #ffffff;
+}
+
+.section-paragraph.light {
+  color: #d8c6a4;
+  max-width: 480px;
+}
+
+.why-choose-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  border-left: 1px solid rgba(215, 178, 77, 0.25);
+  padding-left: 32px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-value {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: clamp(26px, 2.4vw, 34px);
+  color: #f2cf6b;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #c9b391;
+  letter-spacing: 0.02em;
+}
+
+.why-choose-grid {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.why-choose-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 30px 26px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.why-choose-card:hover {
+  border-color: rgba(215, 178, 77, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.why-choose-index {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: rgba(215, 178, 77, 0.35);
+  letter-spacing: 0.05em;
+}
+
+.why-choose-card h4 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+}
+
+.why-choose-card p {
+  font-size: 13px;
+  color: #d8c6a4;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 5 — GLOBAL STANDARDS  (light, content-rich cards)
+   ========================================================================== */
+
+.global-standards-section {
+  background: var(--cream-warm);
+  padding: 100px 56px 110px;
+}
+
+.global-standards-grid {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.global-standard-card {
+  background: #ffffff;
+  border: 1px solid rgba(85, 48, 15, 0.08);
+  border-radius: 16px;
+  padding: 30px 24px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.global-standard-card:hover {
+  border-color: #d7b24d;
+}
+
+.global-standard-card .feature-icon.outline-dark {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.global-standard-card h5 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+.global-standard-card p {
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #6b5c42;
+  margin: 0;
+}
+
+/* ==========================================================================
+   SECTION 6 — PARTNERSHIP CTA  (light gold theme — footer stays the only dark block)
+   ========================================================================== */
+
+.partnership-cta {
+  background: var(--cream);
+  padding: 90px 56px 110px;
+}
+
+.partnership-card {
+  position: relative;
+  max-width: 1360px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fffaf0 0%, #f7f0e2 100%);
+  border: 1px solid rgba(215, 178, 77, 0.35);
+  border-radius: 24px;
+  padding: 60px 56px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 40px;
+  align-items: center;
+  box-shadow: 0 30px 70px rgba(85, 48, 15, 0.12);
+}
+
+.partnership-bg-shape {
+  position: absolute;
+  right: -10%;
+  top: -30%;
+  width: 55%;
+  height: 160%;
+  object-fit: cover;
+  opacity: 0.08;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.partnership-content {
+  position: relative;
+  z-index: 2;
+}
+
+.partnership-heading {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 2.8vw, 36px);
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+
+.partnership-paragraph {
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: #6b5c42;
+  margin: 0 0 30px;
+  max-width: 480px;
+}
+
+.partnership-actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.partnership-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(36, 23, 6, 0.25);
+  padding-bottom: 3px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.partnership-link:hover {
+  color: #d7b24d;
+  border-color: #d7b24d;
+}
+
+.partnership-stats {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-left: 1px solid rgba(85, 48, 15, 0.15);
+  padding-left: 32px;
+}
+
+.partnership-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-value.dark {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: clamp(22px, 2vw, 28px);
+  color: var(--ink);
+  line-height: 1;
+}
+
+.stat-label.dark {
+  font-size: 11.5px;
+  color: #7a6a4d;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .why-choose-header {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .why-choose-stats {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(215, 178, 77, 0.25);
+    padding-top: 28px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .why-choose-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .global-standards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partnership-card {
+    grid-template-columns: 1fr;
+  }
+
+  .partnership-stats {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(85, 48, 15, 0.15);
+    padding-top: 24px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+
+  .story-middle {
+    order: 2;
+  }
+
+  .story-right {
+    order: 3;
+  }
+}
+
+@media (max-width: 980px) {
+
+  .story-section,
+  .categories-section,
+  .why-choose-section,
+  .partnership-cta,
+  .global-standards-section {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-choose-grid,
+  .why-choose-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .partnership-card {
+    padding: 44px 32px;
+  }
+}
+
+@media (max-width: 620px) {
+
+  .story-section,
+  .categories-section,
+  .why-choose-section,
+  .partnership-cta,
+  .global-standards-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .categories-grid,
+  .why-choose-grid,
+  .why-choose-stats,
+  .global-standards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-middle {
+    grid-template-columns: 1fr;
+  }
+
+  .partnership-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .partnership-stats {
+    flex-direction: column;
+    gap: 18px;
+  }
+}

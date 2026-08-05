@@ -1,0 +1,87 @@
+.back-to-top {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    background:
+    linear-gradient(
+      180deg,
+      rgba(70, 48, 24, .72),
+      rgba(55, 38, 20, .60)
+    );
+
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+
+    color: var(--text-color);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, .12),
+        inset 0 1px 0 rgba(255, 255, 255, .18);
+
+    z-index: 999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(18px) scale(.9);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        background .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease,
+        visibility .35s ease;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* .back-to-top:hover {
+    background: rgba(255, 255, 255, .14);
+    border-color: rgba(255, 255, 255, .28);
+    transform: translateY(-6px) scale(1.04);
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, .18),
+        inset 0 1px 0 rgba(255, 255, 255, .28);
+} */
+
+.back-to-top:active {
+    transform: scale(.96);
+}
+
+.back-to-top svg {
+    width: 22px;
+    height: 22px;
+    transition: transform .3s ease;
+}
+
+.back-to-top:hover svg {
+    transform: translateY(-2px);
+}
+
+@media (max-width:768px) {
+
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+}
