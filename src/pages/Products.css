@@ -73,7 +73,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.22em;
-  color: #d7b24d;
+  color: var(--color-navy);
   margin-bottom: 16px;
   text-transform: uppercase;
 }
@@ -156,7 +156,7 @@
 }
 
 /* ==========================================================================
-   SECTION 2 — STORY BEHIND BEVOKY  (light section, dark brown card)
+   SECTION 2 — STORY BEHIND BEVOKY  (light section, golden card)
    ========================================================================== */
 
 .story-section {
@@ -167,29 +167,29 @@
 .story-card {
   max-width: 1360px;
   margin: 0 auto;
-  background: linear-gradient(160deg, var(--amber-800) 0%, var(--amber-950) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(170deg, var(--color-gold-bright) 0%, var(--color-gold) 55%, var(--color-amber) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   padding: 46px 44px;
   display: grid;
   grid-template-columns: 0.85fr 1.5fr 1fr;
   gap: 36px;
   align-items: center;
-  box-shadow: 0 40px 80px rgba(36, 18, 6, 0.35);
+  box-shadow: 0 40px 80px rgba(143, 105, 32, 0.2);
 }
 
 .story-heading {
   font-family: "Montserrat", sans-serif;
   font-weight: 900;
   font-size: clamp(30px, 3.2vw, 40px);
-  color: #ffffff;
+  /* color: var(--color-gold-deep); */
   margin: 0 0 12px;
   letter-spacing: -0.01em;
 }
 
 .story-subtitle {
   font-size: 13.5px;
-  color: #c9b391;
+  color: #ffffff;
   margin: 0 0 16px;
 }
 
@@ -197,7 +197,7 @@
   display: block;
   width: 46px;
   height: 3px;
-  background: linear-gradient(120deg, #d7b24d, #f2cf6b);
+  background: linear-gradient(120deg, var(--color-gold-deep), var(--color-gold));
   border-radius: 2px;
 }
 
@@ -208,8 +208,8 @@
 }
 
 .story-letter-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 14px;
   padding: 16px;
   text-align: center;
@@ -227,19 +227,31 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
   font-size: 20px;
-  color: #ffffff;
+  color: var(--color-gold-deep);
   margin: 0;
 }
+
+.gold-text {
+  color: var(--color-gold-deep);
+}
+
+/* .eyebrow-gold {
+  color: var(--color-gold-deep);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+} */
 
 .story-right p {
   font-size: 13.5px;
   line-height: 1.75;
-  color: #d8c6a4;
+  color: #ffffff;
   margin: 0 0 16px;
 }
 
 .story-right strong {
-  color: #f2cf6b;
+  color: var(--color-navy);
 }
 
 .story-right p:last-child {

@@ -109,9 +109,9 @@ function HeroBottle() {
           {/* <motion.div className={styles.bottleSweep} style={{ x: sweepX }} /> */}
           {/* <motion.div className={styles.bottleSpecular} style={{ x: specularX }} /> */}
 
-          <div className={styles.bottleCondensation} />
+          {/* <div className={styles.bottleCondensation} /> */}
 
-          <div className={styles.bottleBubbleField}>
+          {/* <div className={styles.bottleBubbleField}>
             {bubbles.map((b) => (
               <span
                 key={b.id}
@@ -125,7 +125,7 @@ function HeroBottle() {
                 }}
               />
             ))}
-          </div>
+          </div> */}
 
           <div className={styles.bottleFizz}>
             {fizz.map((b) => (
@@ -146,7 +146,7 @@ function HeroBottle() {
       </motion.div>
 
       {/* Ambient beer bubbles floating in the whole stage, not just on the glass */}
-      <div className={styles.bottleAmbientField} aria-hidden="true">
+      {/* <div className={styles.bottleAmbientField} aria-hidden="true">
         {bubbles.slice(0, 16).map((b) => (
           <span
             key={`ambient-${b.id}`}
@@ -160,7 +160,7 @@ function HeroBottle() {
             }}
           />
         ))}
-      </div>
+      </div> */}
 
       <style>{`
         @keyframes bevoky-rise {

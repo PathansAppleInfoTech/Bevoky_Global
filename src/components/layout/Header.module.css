@@ -7,21 +7,18 @@
 }
 
 .scrolled {
-  padding: .8rem 0;
+  padding: 0.8rem 0;
 
-  background:
-    linear-gradient(
-      180deg,
-      rgba(70, 48, 24, .72),
-      rgba(55, 38, 20, .60)
-    );
+  background: linear-gradient(180deg,
+      #4a321a 0%,
+      #3b2816 100%);
 
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+  transition: all 0.35s ease;
 }
+
 .row {
   display: flex;
   align-items: center;
@@ -173,7 +170,7 @@
 
   z-index: 999;
 
-background: rgba(10, 13, 20, .82);
+  background: rgba(10, 13, 20, .82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;

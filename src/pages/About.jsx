@@ -320,7 +320,7 @@ export default function About() {
               </Reveal>
             </motion.div>
 
-            <div className="story__stats">
+            {/* <div className="story__stats">
               <div className="story__map" aria-hidden="true" />
               <div className="story__grid">
                 {stats.map((s, i) => (
@@ -340,6 +340,29 @@ export default function About() {
                   </motion.div>
                 ))}
               </div>
+            </div> */}
+            <div className="story__stats">
+              <div className="story__map" aria-hidden="true" />
+              <motion.div
+                className="story__visual"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={fadeUp}
+              >
+                <div className="story__glow" aria-hidden="true" />
+
+                <div className="story__frame">
+                  <img src={beerBottle} alt="Curated beverage selection" />
+                  <span className="story__corner story__corner--tl" />
+                  <span className="story__corner story__corner--br" />
+                </div>
+
+                <div className="story__badge">
+                  <strong>Since 2026</strong>
+                  <span>Trusted Import Partner</span>
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -349,7 +372,7 @@ export default function About() {
           <div className="why__inner">
             <div className="why__left">
               <motion.span
-                className="eyebrow"
+                className="eyebrow why__eyebrow"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
@@ -485,7 +508,7 @@ export default function About() {
               viewport={{ once: true, amount: 0.4 }}
               variants={fadeUp}
             >
-              <span className="eyebrow">— JOIN WITH US</span>
+              <span className="eyebrow why__eyebrow">— JOIN WITH US</span>
               <h2>Let's Build Something Exceptional Together</h2>
               <p>
                 Join hands with Bevoky Global and bring premium beverages to
