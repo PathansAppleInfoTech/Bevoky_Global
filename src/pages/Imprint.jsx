@@ -62,7 +62,7 @@ export default function Imprint() {
                     </dl>
                 </section>
 
-                <section className="imprint-clause" data-num="5">
+                {/* <section className="imprint-clause" data-num="5">
                     <h2>VAT Identification</h2>
                     <dl className="imprint-registry">
                         <dt>VAT ID (§ 27a UStG)</dt>
@@ -94,7 +94,8 @@ export default function Imprint() {
                         <dt>EORI Number</dt>
                         <dd className="pending">Yet to be received</dd>
                     </dl>
-                </section>
+                </section> */}
+
             </main>
 
             <footer className="imprint-footer">
