@@ -200,129 +200,47 @@ function Hero() {
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) {
-      console.error("❌ [HeroVideo] Video element not found");
-      return;
-    }
+    if (!video) return;
 
     console.log("🎬 [HeroVideo] Initializing");
 
-    // Safari / iOS autoplay requirements
+    // Safari / iOS
     video.muted = true;
     video.defaultMuted = true;
 
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
-    video.setAttribute("autoplay", "");
 
-    console.log("✅ [HeroVideo] Playback attributes configured");
+    console.log("✅ [HeroVideo] Video configured");
 
     const handlePlaying = () => {
-      console.log("▶️ [HeroVideo] Video is playing");
+      console.log("▶️ [HeroVideo] Autoplay successful");
+    };
+
+    const handlePause = () => {
+      console.log("⏸️ [HeroVideo] Video paused");
     };
 
     const handleError = () => {
-      console.error("❌ [HeroVideo] Video error:", {
+      console.error("❌ [HeroVideo] Video error", {
         code: video.error?.code,
         message: video.error?.message,
-        src: video.currentSrc,
-        readyState: video.readyState,
-        networkState: video.networkState,
+        currentSrc: video.currentSrc,
       });
     };
 
     video.addEventListener("playing", handlePlaying);
+    video.addEventListener("pause", handlePause);
     video.addEventListener("error", handleError);
 
-    // Set source after video properties are configured
-    video.src = heroVideo;
-    video.load();
-
-    console.log("📥 [HeroVideo] Video source loaded:", heroVideo);
-
-    const tryPlay = () => {
-      console.log("🎯 [HeroVideo] Trying playback");
-
-      video.muted = true;
-
-      const promise = video.play();
-
-      if (promise) {
-        promise
-          .then(() => {
-            console.log("✅ [HeroVideo] play() succeeded");
-          })
-          .catch((error) => {
-            console.warn(
-              "⚠️ [HeroVideo] Autoplay blocked:",
-              error.name,
-              error.message
-            );
-          });
-      }
-    };
-
-    const handleCanPlay = () => {
-      console.log("🟢 [HeroVideo] canplay");
-      tryPlay();
-    };
-
-    video.addEventListener("canplay", handleCanPlay, {
-      once: true,
-    });
-
-    // User interaction fallback
-    const handleInteraction = () => {
-      console.log("👆 [HeroVideo] User interaction detected");
-      tryPlay();
-    };
-
-    document.addEventListener(
-      "touchstart",
-      handleInteraction,
-      {
-        once: true,
-        passive: true,
-      }
-    );
-
-    document.addEventListener(
-      "click",
-      handleInteraction,
-      {
-        once: true,
-        passive: true,
-      }
-    );
-
     return () => {
-      video.removeEventListener(
-        "playing",
-        handlePlaying
-      );
-
-      video.removeEventListener(
-        "error",
-        handleError
-      );
-
-      video.removeEventListener(
-        "canplay",
-        handleCanPlay
-      );
-
-      document.removeEventListener(
-        "touchstart",
-        handleInteraction
-      );
-
-      document.removeEventListener(
-        "click",
-        handleInteraction
-      );
+      video.removeEventListener("playing", handlePlaying);
+      video.removeEventListener("pause", handlePause);
+      video.removeEventListener("error", handleError);
     };
-  }, [heroVideo]);
+  }, []);
+
   return (
     <section className={styles.heroSection} id="hero">
       {/* <div className={styles.heroBgPhoto} style={{ backgroundImage: `url(${atmosphereImg})` }} /> */}
@@ -336,8 +254,10 @@ function Hero() {
           muted
           loop
           playsInline
-          preload="none"
-        />
+          preload="auto"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
       </div>
 
 
