@@ -200,11 +200,14 @@ function Hero() {
   useEffect(() => {
     const video = videoRef.current;
 
-    if (!video) return;
+    if (!video) {
+      console.error("❌ [HeroVideo] Video element not found");
+      return;
+    }
 
     console.log("🎬 [HeroVideo] Initializing");
 
-    // Safari / iOS
+    // Safari / iOS autoplay requirements
     video.muted = true;
     video.defaultMuted = true;
 
@@ -212,14 +215,40 @@ function Hero() {
     video.setAttribute("playsinline", "");
     video.setAttribute("webkit-playsinline", "");
 
-    console.log("✅ [HeroVideo] Video configured");
+    const tryPlay = (source) => {
+      console.log(`🎯 [HeroVideo] Trying play: ${source}`);
 
-    const handlePlaying = () => {
-      console.log("▶️ [HeroVideo] Autoplay successful");
+      video.muted = true;
+
+      const promise = video.play();
+
+      if (promise !== undefined) {
+        promise
+          .then(() => {
+            console.log(
+              `✅ [HeroVideo] Playing successfully: ${source}`
+            );
+          })
+          .catch((error) => {
+            console.warn(
+              `⚠️ [HeroVideo] Play blocked: ${source}`,
+              error.name,
+              error.message
+            );
+          });
+      }
     };
 
-    const handlePause = () => {
-      console.log("⏸️ [HeroVideo] Video paused");
+    const handlePlaying = () => {
+      console.log("▶️ [HeroVideo] Video is playing");
+    };
+
+    const handleCanPlay = () => {
+      console.log("🟢 [HeroVideo] canplay");
+
+      // Give native autoplay a chance first.
+      // Then fallback to JS playback.
+      tryPlay("canplay");
     };
 
     const handleError = () => {
@@ -227,17 +256,68 @@ function Hero() {
         code: video.error?.code,
         message: video.error?.message,
         currentSrc: video.currentSrc,
+        readyState: video.readyState,
+        networkState: video.networkState,
       });
     };
 
     video.addEventListener("playing", handlePlaying);
-    video.addEventListener("pause", handlePause);
+    video.addEventListener("canplay", handleCanPlay, {
+      once: true,
+    });
     video.addEventListener("error", handleError);
 
+    // User interaction fallback.
+    // Safari allows playback after a real user gesture.
+    const handleUserInteraction = () => {
+      console.log("👆 [HeroVideo] User interaction detected");
+
+      tryPlay("user-interaction");
+    };
+
+    document.addEventListener(
+      "touchstart",
+      handleUserInteraction,
+      {
+        once: true,
+        passive: true,
+      }
+    );
+
+    document.addEventListener(
+      "click",
+      handleUserInteraction,
+      {
+        once: true,
+        passive: true,
+      }
+    );
+
     return () => {
-      video.removeEventListener("playing", handlePlaying);
-      video.removeEventListener("pause", handlePause);
-      video.removeEventListener("error", handleError);
+      video.removeEventListener(
+        "playing",
+        handlePlaying
+      );
+
+      video.removeEventListener(
+        "canplay",
+        handleCanPlay
+      );
+
+      video.removeEventListener(
+        "error",
+        handleError
+      );
+
+      document.removeEventListener(
+        "touchstart",
+        handleUserInteraction
+      );
+
+      document.removeEventListener(
+        "click",
+        handleUserInteraction
+      );
     };
   }, []);
 
