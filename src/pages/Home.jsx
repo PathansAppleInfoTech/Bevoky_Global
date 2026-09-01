@@ -194,63 +194,447 @@ function HeroCheckIcon() {
 
 function Hero() {
 
-
   const videoRef = useRef(null);
+  const wrapRef = useRef(null);
 
   useEffect(() => {
+    console.log("🎬 [HeroVideo] Effect started");
+    console.log("🎬 [HeroVideo] heroVideo:", heroVideo);
+
     const video = videoRef.current;
-    if (!video) return;
+    const wrap = wrapRef.current;
 
-    video.setAttribute("playsinline", "");
-    video.setAttribute("webkit-playsinline", "");
-    video.setAttribute("muted", "");
-    video.muted = true;
-  }, []);
+    if (!video) {
+      console.error("❌ [HeroVideo] Video element not found");
+      return;
+    }
 
+    console.log("✅ [HeroVideo] Video element found");
+    console.log("🎬 [HeroVideo] Initial video state:", {
+      src: video.src,
+      muted: video.muted,
+      readyState: video.readyState,
+      networkState: video.networkState,
+      paused: video.paused,
+    });
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    // --------------------------------------------------
+    // iOS / Safari setup
+    // --------------------------------------------------
+
+    console.log("⚙️ [HeroVideo] Setting Safari/iOS attributes...");
 
     video.muted = true;
     video.defaultMuted = true;
 
-    const playVideo = () => {
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+
+    console.log("✅ [HeroVideo] Safari/iOS attributes set", {
+      muted: video.muted,
+      defaultMuted: video.defaultMuted,
+      playsInline: video.playsInline,
+      webkitPlaysInline: video.getAttribute(
+        "webkit-playsinline"
+      ),
+    });
+
+    // --------------------------------------------------
+    // Video events
+    // --------------------------------------------------
+
+    const handleLoadStart = () => {
+      console.log("📥 [HeroVideo] loadstart");
+    };
+
+    const handleLoadedMetadata = () => {
+      console.log("📐 [HeroVideo] loadedmetadata", {
+        duration: video.duration,
+        videoWidth: video.videoWidth,
+        videoHeight: video.videoHeight,
+      });
+    };
+
+    const handleLoadedData = () => {
+      console.log("📦 [HeroVideo] loadeddata");
+    };
+
+    const handleCanPlay = () => {
+      console.log("🟢 [HeroVideo] canplay");
+      console.log("🟢 [HeroVideo] Ready to play", {
+        readyState: video.readyState,
+        networkState: video.networkState,
+      });
+
+      wrap?.classList.add("loaded");
+
+      tryPlay("canplay");
+    };
+
+    const handleCanPlayThrough = () => {
+      console.log("🟢 [HeroVideo] canplaythrough");
+    };
+
+    const handlePlaying = () => {
+      console.log("▶️ [HeroVideo] PLAYING successfully");
+    };
+
+    const handlePlay = () => {
+      console.log("▶️ [HeroVideo] play event fired");
+    };
+
+    const handlePause = () => {
+      console.log("⏸️ [HeroVideo] pause event fired");
+    };
+
+    const handleWaiting = () => {
+      console.warn("⏳ [HeroVideo] waiting/buffering");
+    };
+
+    const handleStalled = () => {
+      console.warn("⚠️ [HeroVideo] stalled");
+    };
+
+    const handleSuspend = () => {
+      console.log("⏸️ [HeroVideo] suspend");
+    };
+
+    const handleError = () => {
+      const error = video.error;
+
+      console.error("❌ [HeroVideo] VIDEO ERROR", {
+        code: error?.code,
+        message: error?.message,
+        currentSrc: video.currentSrc,
+        src: video.src,
+        networkState: video.networkState,
+        readyState: video.readyState,
+      });
+    };
+
+    const handleEmptied = () => {
+      console.warn("⚠️ [HeroVideo] emptied");
+    };
+
+    video.addEventListener(
+      "loadstart",
+      handleLoadStart
+    );
+
+    video.addEventListener(
+      "loadedmetadata",
+      handleLoadedMetadata
+    );
+
+    video.addEventListener(
+      "loadeddata",
+      handleLoadedData
+    );
+
+    video.addEventListener(
+      "canplay",
+      handleCanPlay,
+      { once: true }
+    );
+
+    video.addEventListener(
+      "canplaythrough",
+      handleCanPlayThrough
+    );
+
+    video.addEventListener(
+      "playing",
+      handlePlaying
+    );
+
+    video.addEventListener(
+      "play",
+      handlePlay
+    );
+
+    video.addEventListener(
+      "pause",
+      handlePause
+    );
+
+    video.addEventListener(
+      "waiting",
+      handleWaiting
+    );
+
+    video.addEventListener(
+      "stalled",
+      handleStalled
+    );
+
+    video.addEventListener(
+      "suspend",
+      handleSuspend
+    );
+
+    video.addEventListener(
+      "error",
+      handleError
+    );
+
+    video.addEventListener(
+      "emptied",
+      handleEmptied
+    );
+
+    // --------------------------------------------------
+    // Play function
+    // --------------------------------------------------
+
+    const tryPlay = (source = "unknown") => {
+      console.log(
+        `🎯 [HeroVideo] tryPlay() called from: ${source}`
+      );
+
+      console.log("🎯 [HeroVideo] Before play()", {
+        src: video.src,
+        currentSrc: video.currentSrc,
+        muted: video.muted,
+        paused: video.paused,
+        readyState: video.readyState,
+        networkState: video.networkState,
+      });
+
+      video.muted = true;
+
       const promise = video.play();
 
       if (promise !== undefined) {
-        promise.catch(() => { });
+        promise
+          .then(() => {
+            console.log(
+              `✅ [HeroVideo] play() promise RESOLVED (${source})`
+            );
+          })
+          .catch((error) => {
+            console.error(
+              `❌ [HeroVideo] play() promise REJECTED (${source})`,
+              {
+                name: error?.name,
+                message: error?.message,
+              }
+            );
+          });
+      } else {
+        console.warn(
+          "⚠️ [HeroVideo] video.play() did not return a Promise"
+        );
       }
     };
 
-    playVideo();
+    // --------------------------------------------------
+    // Intersection Observer
+    // --------------------------------------------------
 
-    document.addEventListener("touchstart", playVideo, {
-      once: true,
-    });
+    console.log(
+      "👀 [HeroVideo] Creating IntersectionObserver..."
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        console.log(
+          "👀 [HeroVideo] IntersectionObserver triggered",
+          {
+            isIntersecting: entry.isIntersecting,
+            intersectionRatio: entry.intersectionRatio,
+            boundingRect: entry.boundingClientRect,
+          }
+        );
+
+        if (entry.isIntersecting) {
+          console.log(
+            "🟢 [HeroVideo] Hero is visible"
+          );
+
+          if (!video.src) {
+            console.log(
+              "📥 [HeroVideo] Setting video source..."
+            );
+
+            video.src = heroVideo;
+
+            console.log(
+              "📥 [HeroVideo] Source assigned:",
+              video.src
+            );
+
+            console.log(
+              "📥 [HeroVideo] Calling video.load()..."
+            );
+
+            video.load();
+
+            console.log(
+              "✅ [HeroVideo] video.load() called"
+            );
+          } else {
+            console.log(
+              "ℹ️ [HeroVideo] Video source already exists:",
+              video.src
+            );
+          }
+
+          tryPlay("intersection");
+        } else {
+          console.log(
+            "🔴 [HeroVideo] Hero is outside viewport"
+          );
+
+          if (!video.paused) {
+            console.log(
+              "⏸️ [HeroVideo] Pausing video because it left viewport"
+            );
+
+            video.pause();
+          }
+        }
+      },
+      {
+        rootMargin: "200px 0px",
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(video);
+
+    console.log(
+      "✅ [HeroVideo] IntersectionObserver observing video"
+    );
+
+    // --------------------------------------------------
+    // iOS touch fallback
+    // --------------------------------------------------
+
+    const handleTouch = () => {
+      console.log(
+        "📱 [HeroVideo] User touch detected"
+      );
+
+      tryPlay("touchstart");
+    };
+
+    document.addEventListener(
+      "touchstart",
+      handleTouch,
+      {
+        once: true,
+        passive: true,
+      }
+    );
+
+    console.log(
+      "📱 [HeroVideo] touchstart fallback registered"
+    );
+
+    // --------------------------------------------------
+    // Cleanup
+    // --------------------------------------------------
 
     return () => {
-      document.removeEventListener("touchstart", playVideo);
-    };
-  }, []);
+      console.log(
+        "🧹 [HeroVideo] Cleaning up..."
+      );
 
+      observer.disconnect();
+
+      video.removeEventListener(
+        "loadstart",
+        handleLoadStart
+      );
+
+      video.removeEventListener(
+        "loadedmetadata",
+        handleLoadedMetadata
+      );
+
+      video.removeEventListener(
+        "loadeddata",
+        handleLoadedData
+      );
+
+      video.removeEventListener(
+        "canplay",
+        handleCanPlay
+      );
+
+      video.removeEventListener(
+        "canplaythrough",
+        handleCanPlayThrough
+      );
+
+      video.removeEventListener(
+        "playing",
+        handlePlaying
+      );
+
+      video.removeEventListener(
+        "play",
+        handlePlay
+      );
+
+      video.removeEventListener(
+        "pause",
+        handlePause
+      );
+
+      video.removeEventListener(
+        "waiting",
+        handleWaiting
+      );
+
+      video.removeEventListener(
+        "stalled",
+        handleStalled
+      );
+
+      video.removeEventListener(
+        "suspend",
+        handleSuspend
+      );
+
+      video.removeEventListener(
+        "error",
+        handleError
+      );
+
+      video.removeEventListener(
+        "emptied",
+        handleEmptied
+      );
+
+      document.removeEventListener(
+        "touchstart",
+        handleTouch
+      );
+
+      console.log(
+        "✅ [HeroVideo] Cleanup complete"
+      );
+    };
+  }, [heroVideo]);
   return (
     <section className={styles.heroSection} id="hero">
       {/* <div className={styles.heroBgPhoto} style={{ backgroundImage: `url(${atmosphereImg})` }} /> */}
-      <video
-        ref={videoRef}
-        className={styles.heroBgVideo}
-        poster={atmosphereImg}
-        autoPlay
-        muted
-        loop
-        playsInline
-        webkit-playsinline="true"
-        x5-playsinline="true"
-        preload="auto"
-      >
-        <source src={heroVideo} type="video/mp4" />
-      </video>
+
+      <div ref={wrapRef} className={styles.heroVideoWrap}>
+        <video
+          ref={videoRef}
+          className={styles.heroBgVideo}
+          poster={atmosphereImg}
+          muted
+          loop
+          playsInline
+          preload="none"
+        />
+      </div>
 
 
       <div className={styles.heroBgGradient} />

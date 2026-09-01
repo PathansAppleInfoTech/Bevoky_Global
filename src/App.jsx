@@ -1,95 +1,54 @@
-import { Suspense, lazy, useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
-import PageTransition from './components/layout/PageTransition';
-import ScrollToTop from './components/layout/ScrollToTop';
-import useLenis from './hooks/useLenis';
+import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 
-// Home stays eager (it's the primary landing experience);
-// secondary pages are code-split and fetched on demand.
-import Home from './pages/Home';
-import BubbleField from './components/ui/BubbleField';
-import BackToTop from './components/layout/BackToTop';
-import Imprint from './pages/Imprint';
-import Privacy from './pages/Privacy';
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import ScrollToTop from "./components/layout/ScrollToTop";
+import BackToTop from "./components/layout/BackToTop";
+import useLenis from "./hooks/useLenis";
 
-const About = lazy(() => import('./pages/About'));
-const Products = lazy(() => import('./pages/Products'));
-const Contact = lazy(() => import('./pages/Contact'));
+import Home from "./pages/Home";
+import Imprint from "./pages/Imprint";
+import Privacy from "./pages/Privacy";
+import BubbleField from "./components/ui/BubbleField";
+
+// Lazy-load secondary pages
+const About = lazy(() => import("./pages/About"));
+const Products = lazy(() => import("./pages/Products"));
+const Contact = lazy(() => import("./pages/Contact"));
+
+function Loading() {
+  return null;
+}
 
 export default function App() {
-  const location = useLocation();
   useLenis();
 
   return (
     <>
-      <BubbleField />
       <ScrollToTop />
+
       <Header />
+
       <main>
-            <Routes location={location} key={location.pathname}>
-              <Route
-                path="/"
-                element={
-                  <PageTransition>
-                    <Home />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/about"
-                element={
-                  <PageTransition>
-                    <About />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/products"
-                element={
-                  <PageTransition>
-                    <Products />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/contact"
-                element={
-                  <PageTransition>
-                    <Contact />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/imprint"
-                element={
-                  <PageTransition>
-                    <Imprint />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="/privacy-policy"
-                element={
-                  <PageTransition>
-                    <Privacy />
-                  </PageTransition>
-                }
-              />
-              <Route
-                path="*"
-                element={
-                  <PageTransition>
-                    <Home />
-                  </PageTransition>
-                }
-              />
-            </Routes>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/imprint" element={<Imprint />} />
+            <Route path="/privacy-policy" element={<Privacy />} />
+
+            {/* Fallback */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
       </main>
+
       <BackToTop />
       <Footer />
+      <BubbleField />
     </>
   );
 }
