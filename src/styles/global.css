@@ -8,7 +8,9 @@
 
 html {
   scroll-behavior: auto;
-  background: var(--color-navy);
+  /* background: var(--color-navy); */
+  background: linear-gradient(170deg, var(--color-gold-bright) 0%, var(--color-gold) 55%, var(--color-amber) 100%);
+
 }
 
 html.lenis {
@@ -47,7 +49,10 @@ button {
   cursor: pointer;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-display);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -117,15 +122,18 @@ button:focus-visible,
   display: none;
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-navy);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-gold-deep);
   border-radius: 10px;
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

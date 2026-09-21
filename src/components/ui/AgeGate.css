@@ -1,0 +1,613 @@
+/* =========================================
+   BEVOKY GLOBAL
+   AGE VERIFICATION
+   GOLD LIGHT THEME
+   ========================================= */
+
+.age-gate {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    font-family: var(--font-body);
+
+    animation:
+        ageGateFadeIn
+        var(--dur-med)
+        var(--ease-luxury)
+        forwards;
+}
+
+.age-gate--closing {
+    animation:
+        ageGateFadeOut
+        0.5s
+        var(--ease-soft)
+        forwards;
+}
+
+
+/* =========================================
+   GOLD GRADIENT BACKGROUND
+   ========================================= */
+
+.age-gate__backdrop {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            170deg,
+            var(--color-gold-bright) 0%,
+            var(--color-gold) 55%,
+            var(--color-amber) 100%
+        );
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* Soft light overlay */
+
+.age-gate__backdrop::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 255, 255, 0.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(255, 255, 255, 0.12),
+            transparent 25%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   MAIN CARD
+   ========================================= */
+
+.age-gate__content {
+    position: relative;
+    z-index: 2;
+
+    width: min(540px, 100%);
+
+    padding: 52px 48px 40px;
+
+    text-align: center;
+
+    /*
+       Warm light card.
+       Not pure white — keeps it premium.
+    */
+
+    background:
+        rgba(255, 248, 229, 0.94);
+
+    border:
+        1px solid
+        rgba(143, 105, 32, 0.28);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        0 30px 80px rgba(57, 34, 22, 0.25),
+        0 0 60px rgba(255, 255, 255, 0.16);
+
+    overflow: hidden;
+
+    animation:
+        ageGateCardIn
+        0.8s
+        var(--ease-luxury)
+        forwards;
+}
+
+
+/* =========================================
+   TOP GOLD DETAIL
+   ========================================= */
+
+.age-gate__top-line {
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 120px;
+    height: 3px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--color-gold-deep),
+            var(--color-gold),
+            transparent
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(143, 105, 32, 0.30);
+}
+
+
+/* =========================================
+   LOGO
+   ========================================= */
+
+.age-gate__logo {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 21px;
+}
+
+.age-gate__logo img {
+    display: block;
+
+    width: auto;
+
+    max-width: 190px;
+    height: 75px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 6px 14px
+            rgba(57, 34, 22, 0.16)
+        );
+}
+
+
+/* =========================================
+   DIVIDER
+   ========================================= */
+
+.age-gate__divider {
+    width: 52px;
+    height: 1px;
+
+    margin:
+        0 auto 27px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--color-gold-deep),
+            transparent
+        );
+}
+
+
+/* =========================================
+   EYEBROW
+   ========================================= */
+
+.age-gate__eyebrow {
+    margin:
+        0 0 13px;
+
+    color:
+        var(--color-gold-deep);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.24em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* =========================================
+   HEADING
+   ========================================= */
+
+.age-gate h1 {
+    margin: 0;
+
+    color:
+        var(--color-ink);
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        clamp(
+            2.25rem,
+            5vw,
+            3.5rem
+        );
+
+    font-weight:
+        700;
+
+    line-height:
+        1.02;
+
+    letter-spacing:
+        -0.045em;
+}
+
+.age-gate h1 span {
+    display: block;
+
+    margin-top: 5px;
+
+    color:
+        var(--color-gold-deep);
+}
+
+
+/* =========================================
+   MAIN MESSAGE
+   ========================================= */
+
+.age-gate__message {
+    max-width: 420px;
+
+    margin:
+        24px auto 0;
+
+    color:
+        rgba(23, 17, 11, 0.78);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.92rem;
+
+    line-height:
+        1.75;
+}
+
+
+/* =========================================
+   UNDERSTANDING MESSAGE
+   ========================================= */
+
+.age-gate__notice {
+    max-width: 415px;
+
+    margin:
+        15px auto 0;
+
+    color:
+        rgba(23, 17, 11, 0.54);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.72rem;
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================
+   ACTIONS
+   ========================================= */
+
+.age-gate__actions {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin-top:
+        31px;
+}
+
+
+/* =========================================
+   MAGNETIC ENTER BUTTON
+   ========================================= */
+
+.age-gate__enter-button {
+    width: 100%;
+
+    min-height: 56px;
+}
+
+
+/*
+   Uses the existing MagneticButton.
+
+   Its primary background should be:
+
+   linear-gradient(
+       170deg,
+       var(--color-gold-bright) 0%,
+       var(--color-gold) 55%,
+       var(--color-amber) 100%
+   );
+*/
+
+
+/* =========================================
+   EXIT BUTTON
+   ========================================= */
+
+.age-gate__exit-button {
+    width: 100%;
+
+    min-height: 48px;
+
+    padding:
+        0 20px;
+
+    color:
+        var(--color-ink);
+
+    background:
+        rgba(23, 17, 11, 0.035);
+
+    border:
+        1px solid
+        rgba(143, 105, 32, 0.30);
+
+    border-radius:
+        var(--radius-sm);
+
+    font-family:
+        var(--font-display);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        0.13em;
+
+    text-transform:
+        uppercase;
+
+    cursor:
+        pointer;
+
+    transition:
+        color var(--dur-fast) var(--ease-soft),
+        background var(--dur-fast) var(--ease-soft),
+        border-color var(--dur-fast) var(--ease-soft),
+        transform var(--dur-fast) var(--ease-luxury),
+        box-shadow var(--dur-fast) var(--ease-soft);
+}
+
+.age-gate__exit-button:hover {
+    color:
+        var(--color-ink);
+
+    background:
+        rgba(255, 255, 255, 0.22);
+
+    border-color:
+        var(--color-gold-deep);
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 6px 18px
+        rgba(57, 34, 22, 0.10);
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.age-gate__footer {
+    margin:
+        23px 0 0;
+
+    color:
+        rgba(23, 17, 11, 0.42);
+
+    font-family:
+        var(--font-body);
+
+    font-size:
+        0.65rem;
+
+    letter-spacing:
+        0.06em;
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes ageGateFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes ageGateFadeOut {
+
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+@keyframes ageGateCardIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .age-gate {
+        padding:
+            16px;
+    }
+
+    .age-gate__content {
+        width:
+            100%;
+
+        padding:
+            43px
+            24px
+            31px;
+
+        border-radius:
+            var(--radius-md);
+    }
+
+    .age-gate__logo {
+        margin-bottom:
+            18px;
+    }
+
+    .age-gate__logo img {
+        max-width:
+            155px;
+
+        height:
+            55px;
+    }
+
+    .age-gate__eyebrow {
+        font-size:
+            0.59rem;
+
+        letter-spacing:
+            0.20em;
+    }
+
+    .age-gate h1 {
+        font-size:
+            2.15rem;
+    }
+
+    .age-gate__message {
+        margin-top:
+            20px;
+
+        font-size:
+            0.82rem;
+    }
+
+    .age-gate__notice {
+        font-size:
+            0.67rem;
+    }
+
+    .age-gate__actions {
+        margin-top:
+            27px;
+    }
+
+    .age-gate__enter-button {
+        min-height:
+            53px;
+    }
+
+    .age-gate__exit-button {
+        min-height:
+            48px;
+
+        font-size:
+            0.62rem;
+    }
+
+    .age-gate__footer {
+        margin-top:
+            20px;
+
+        font-size:
+            0.58rem;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .age-gate,
+    .age-gate__content {
+        animation:
+            none;
+    }
+
+    .age-gate__exit-button {
+        transition:
+            none;
+    }
+}

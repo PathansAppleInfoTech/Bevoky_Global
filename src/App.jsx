@@ -11,6 +11,9 @@ import Home from "./pages/Home";
 import Imprint from "./pages/Imprint";
 import Privacy from "./pages/Privacy";
 import BubbleField from "./components/ui/BubbleField";
+import AgeGate from "./components/ui/AgeGate";
+
+import "./components/ui/AgeGate.css";
 
 // Lazy-load secondary pages
 const About = lazy(() => import("./pages/About"));
@@ -26,6 +29,13 @@ export default function App() {
 
   return (
     <>
+      {/* 
+        Age verification gate.
+        It checks localStorage and only appears
+        when the visitor has not previously verified.
+      */}
+      <AgeGate />
+
       <ScrollToTop />
 
       <Header />
@@ -34,11 +44,19 @@ export default function App() {
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/about" element={<About />} />
+
             <Route path="/products" element={<Products />} />
+
             <Route path="/contact" element={<Contact />} />
+
             <Route path="/imprint" element={<Imprint />} />
-            <Route path="/privacy-policy" element={<Privacy />} />
+
+            <Route
+              path="/privacy-policy"
+              element={<Privacy />}
+            />
 
             {/* Fallback */}
             <Route path="*" element={<Home />} />
@@ -47,7 +65,9 @@ export default function App() {
       </main>
 
       <BackToTop />
+
       <Footer />
+
       <BubbleField />
     </>
   );
