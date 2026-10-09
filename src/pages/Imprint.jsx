@@ -66,7 +66,7 @@ export default function Imprint() {
                     <h2>VAT Identification</h2>
                     <dl className="imprint-registry">
                         <dt>VAT ID (USt-IdNr)</dt>
-                        <dd className="pending">DE465453255</dd>
+                        <dd>DE465453255</dd>
                     </dl>
                 </section>
 
