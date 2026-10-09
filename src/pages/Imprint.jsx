@@ -62,15 +62,15 @@ export default function Imprint() {
                     </dl>
                 </section>
 
-                {/* <section className="imprint-clause" data-num="5">
+                <section className="imprint-clause" data-num="5">
                     <h2>VAT Identification</h2>
                     <dl className="imprint-registry">
-                        <dt>VAT ID (§ 27a UStG)</dt>
-                        <dd className="pending">Yet to be received</dd>
+                        <dt>VAT ID (USt-IdNr)</dt>
+                        <dd className="pending">DE465453255</dd>
                     </dl>
                 </section>
 
-                <section className="imprint-clause" data-num="6">
+                {/*  <section className="imprint-clause" data-num="6">
                     <h2>Supervisory Authority</h2>
                     <dl className="imprint-registry">
                         <dt>Competent Authority</dt>
